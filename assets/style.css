@@ -21,13 +21,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Main home screen */
+/* Main fixed homepage */
 
 .homepage {
   position: relative;
-  min-width: 1280px;
-  min-height: 760px;
+  width: 100vw;
   height: 100vh;
+  min-width: 1280px;
+  min-height: 720px;
   overflow: hidden;
   background-image: url("images/homepage-bg.jpg");
   background-size: cover;
@@ -35,69 +36,78 @@ body {
   background-repeat: no-repeat;
 }
 
+/* Left yellow card */
+
 .home-card {
   position: absolute;
   left: 32px;
   top: 32px;
-  width: 610px;
-  height: calc(100vh - 64px);
-  min-height: 680px;
-  max-height: 820px;
-  padding: 24px;
+  width: 560px;
+  height: auto;
+  padding: 22px 24px 18px;
   background: var(--yellow);
-  border: 2px solid var(--black);
+  border: none;
   border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: block;
 }
 
+/* Brand */
+
 .brand-block {
-  padding-bottom: 22px;
+  padding-bottom: 18px;
   border-bottom: 1px solid var(--line);
 }
 
 .brand-block h1 {
   margin: 0;
-  font-size: 88px;
+  font-size: 72px;
   line-height: 0.86;
   letter-spacing: -0.075em;
   font-weight: 900;
 }
 
 .brand-block p {
-  margin: 22px 0 0;
-  font-size: 22px;
+  margin: 18px 0 0;
+  font-size: 20px;
   line-height: 1.25;
   font-style: italic;
   font-weight: 800;
 }
 
+/* Main entry */
+
 .feature-block {
-  padding: 22px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--line);
 }
 
+.feature-block a {
+  color: var(--black);
+  text-decoration: none;
+}
+
 .small-label {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
 }
 
 .feature-block h2 {
   margin: 0;
-  font-size: 42px;
-  line-height: 1.05;
+  font-size: 36px;
+  line-height: 1.04;
   letter-spacing: -0.055em;
   font-weight: 900;
 }
 
 .mono {
-  margin: 26px 0 0;
+  margin: 20px 0 0;
   font-family: "Courier New", Courier, monospace;
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.45;
 }
+
+/* News */
 
 .news-block {
   border-bottom: 1px solid var(--line);
@@ -107,79 +117,93 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 18px;
-  padding: 14px 0;
+  padding: 10px 0;
   border-bottom: 1px solid var(--line);
   font-family: "Courier New", Courier, monospace;
-  font-size: 15px;
-  line-height: 1.45;
+  font-size: 14px;
+  line-height: 1.42;
 }
 
 .news-row:last-child {
   border-bottom: none;
 }
 
+.news-row a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.issue-number {
+  text-align: right;
+}
+
+/* Buttons */
+
 .home-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  padding-top: 22px;
+  gap: 8px;
+  padding-top: 18px;
 }
 
 .home-buttons a,
-.panel-button,
-.close-button {
+.close-button,
+.panel-button {
   display: block;
-  padding: 11px 14px;
-  border: 1.5px solid var(--black);
+  padding: 9px 12px;
+  border: 1.2px solid var(--black);
   border-radius: 7px;
   color: var(--black);
   background: transparent;
   text-align: center;
   text-decoration: none;
   font-family: "Courier New", Courier, monospace;
-  font-size: 14px;
-  transition: background 0.16s ease, color 0.16s ease;
+  font-size: 13px;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
 }
 
 .home-buttons a:hover,
+.close-button:hover,
 .panel-button:hover,
-.close-button:hover {
-  background: rgba(255, 255, 255, 0.45);
+a:hover {
+  opacity: 0.55;
 }
 
 .home-buttons .wide {
   grid-column: 1 / -1;
 }
 
+/* Right welcome card */
+
 .welcome-card {
   position: absolute;
   right: 32px;
   bottom: 32px;
-  width: 390px;
-  padding: 22px;
+  width: 340px;
+  padding: 18px;
   background: var(--yellow);
-  border: 2px solid var(--black);
+  border: none;
   border-radius: var(--radius);
   text-align: right;
 }
 
 .welcome-card h2 {
-  margin: 0 0 18px;
-  font-size: 40px;
+  margin: 0 0 14px;
+  font-size: 34px;
   line-height: 0.95;
   letter-spacing: -0.055em;
   font-weight: 900;
 }
 
 .welcome-card p {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   font-family: "Courier New", Courier, monospace;
-  font-size: 14px;
-  line-height: 1.45;
+  font-size: 13px;
+  line-height: 1.42;
 }
 
 .welcome-card .credit {
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .welcome-card .contact {
@@ -191,12 +215,12 @@ body {
   color: var(--black);
 }
 
-/* Right-side overlay panels */
+/* Right overlay panels */
 
-.overlay-panel {
+.side-panel {
   display: none;
   position: fixed;
-  z-index: 50;
+  z-index: 20;
   top: 0;
   right: 0;
   width: 600px;
@@ -207,11 +231,11 @@ body {
   overflow-y: auto;
 }
 
-.overlay-panel:target {
+.side-panel:target {
   display: block;
 }
 
-.panel-inner {
+.panel-content {
   max-width: 520px;
   margin: 0 auto;
 }
@@ -223,7 +247,7 @@ body {
   padding: 8px 12px;
 }
 
-.panel-kicker {
+.panel-title {
   margin: 0;
   padding-top: 16px;
   border-top: 1px solid var(--line);
@@ -231,7 +255,7 @@ body {
   font-weight: 700;
 }
 
-.panel-inner h2 {
+.panel-content h2 {
   margin: 28px 0 22px;
   font-size: 44px;
   line-height: 1;
@@ -239,19 +263,19 @@ body {
   font-weight: 900;
 }
 
-.panel-inner p {
+.panel-content p {
   margin: 0 0 22px;
   font-family: "Courier New", Courier, monospace;
   font-size: 16px;
   line-height: 1.55;
 }
 
-.panel-inner a {
+.panel-content a {
   color: var(--black);
   text-underline-offset: 0.18em;
 }
 
-.panel-inner hr {
+.panel-content hr {
   border: none;
   border-top: 1px solid var(--line);
   margin: 22px 0;
@@ -262,115 +286,10 @@ body {
   margin-top: 12px;
 }
 
-/* Smaller screens: keep fixed composition but allow page scroll */
+/* Small screens: keep desktop composition, allow horizontal scroll */
 
 @media (max-width: 1279px) {
   .homepage {
     overflow-x: auto;
   }
-}
-
-/* === Home page size correction === */
-
-/* Stop the homepage elements from stretching with viewport height */
-.home-screen {
-  min-width: 1280px;
-  min-height: 720px;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* Left yellow card: smaller, fixed, content fully contained */
-.yellow-card {
-  left: 32px;
-  top: 32px;
-  width: 560px;
-  height: auto;
-  min-height: 0;
-  max-height: none;
-  padding: 20px;
-  border: none;
-  border-radius: 12px;
-}
-
-/* Reduce title size closer to Cargo homepage */
-.brand-section h1 {
-  font-size: 78px;
-  line-height: 0.82;
-}
-
-.brand-section h2 {
-  margin-top: 22px;
-  font-size: 20px;
-  line-height: 1.25;
-}
-
-/* Tighten vertical spacing */
-hr {
-  margin: 16px 0;
-}
-
-.feature-block,
-.main-entry {
-  padding: 0;
-}
-
-.main-entry h3,
-.feature-block h2 {
-  font-size: 38px;
-  line-height: 1.04;
-}
-
-.entry-meta,
-.mono {
-  margin-top: 22px;
-}
-
-.news-row {
-  padding: 0;
-  font-size: 14px;
-  line-height: 1.45;
-}
-
-/* Make sure buttons sit inside the card */
-.button-grid {
-  margin-top: 18px;
-  padding-top: 0;
-}
-
-/* Right welcome card: smaller and no heavy border */
-.welcome-card {
-  right: 32px;
-  bottom: 32px;
-  width: 350px;
-  padding: 18px;
-  border: none;
-  border-radius: 12px;
-}
-
-.welcome-card h2 {
-  font-size: 34px;
-  margin-bottom: 14px;
-}
-
-.welcome-card p {
-  font-size: 13px;
-  line-height: 1.42;
-  margin-bottom: 14px;
-}
-
-/* Keep button outlines, but make them lighter */
-.button-grid a,
-.close-button,
-.panel-button {
-  border: 1.2px solid var(--black);
-}
-
-/* Hover like Cargo: fade rather than grey block */
-a {
-  transition: opacity 0.2s ease;
-}
-
-a:hover {
-  opacity: 0.55;
 }
