@@ -2,8 +2,8 @@
   --yellow: #ffd000;
   --black: #111111;
   --white: #ffffff;
-  --soft-line: rgba(0, 0, 0, 0.18);
-  --radius: 14px;
+  --line: rgba(0, 0, 0, 0.18);
+  --radius: 12px;
 }
 
 * {
@@ -16,163 +16,170 @@ html {
 
 body {
   margin: 0;
-  background: var(--yellow);
   color: var(--black);
+  background: var(--yellow);
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.45;
 }
 
-a {
-  color: var(--black);
-  text-underline-offset: 0.18em;
-}
+/* Main home screen */
 
 .homepage {
-  min-height: 100vh;
-  padding: 2rem;
   position: relative;
+  min-width: 1280px;
+  min-height: 760px;
+  height: 100vh;
+  overflow: hidden;
   background-image: url("images/homepage-bg.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
 }
 
-.main-card {
-  width: min(620px, calc(100vw - 4rem));
-  min-height: calc(100vh - 4rem);
-  padding: 1.5rem;
+.home-card {
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  width: 610px;
+  height: calc(100vh - 64px);
+  min-height: 680px;
+  max-height: 820px;
+  padding: 24px;
   background: var(--yellow);
   border: 2px solid var(--black);
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
 }
 
-.brand-area {
-  border-bottom: 1px solid var(--soft-line);
-  padding-bottom: 1.4rem;
+.brand-block {
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
 }
 
-.brand-logo {
-  display: block;
-  max-width: 100%;
-  width: 520px;
-  height: auto;
-  margin-bottom: 0.9rem;
-}
-
-.journal-subtitle {
+.brand-block h1 {
   margin: 0;
-  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-size: 88px;
+  line-height: 0.86;
+  letter-spacing: -0.075em;
+  font-weight: 900;
+}
+
+.brand-block p {
+  margin: 22px 0 0;
+  font-size: 22px;
+  line-height: 1.25;
   font-style: italic;
   font-weight: 800;
 }
 
-.feature-entry {
-  padding: 1.4rem 0;
-  border-bottom: 1px solid var(--soft-line);
+.feature-block {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
 }
 
-.entry-label {
-  margin: 0 0 0.3rem;
+.small-label {
+  margin: 0 0 10px;
   font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
 }
 
-.feature-entry h1 {
+.feature-block h2 {
   margin: 0;
-  font-size: clamp(2.1rem, 4.8vw, 3.7rem);
+  font-size: 42px;
   line-height: 1.05;
   letter-spacing: -0.055em;
   font-weight: 900;
 }
 
-.entry-meta {
-  margin: 1.4rem 0 0;
+.mono {
+  margin: 26px 0 0;
   font-family: "Courier New", Courier, monospace;
-  font-size: 1rem;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
-.notice-list {
-  border-bottom: 1px solid var(--soft-line);
+.news-block {
+  border-bottom: 1px solid var(--line);
 }
 
-.notice-row {
+.news-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1rem;
-  padding: 0.9rem 0;
-  border-bottom: 1px solid var(--soft-line);
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
   font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  line-height: 1.45;
 }
 
-.notice-row:last-child {
+.news-row:last-child {
   border-bottom: none;
 }
 
-.notice-issue {
-  text-align: right;
-}
-
-.card-actions {
+.home-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.7rem;
-  padding-top: 1.4rem;
+  gap: 10px;
+  padding-top: 22px;
 }
 
-.card-actions a,
-.button {
+.home-buttons a,
+.panel-button,
+.close-button {
   display: block;
-  padding: 0.75rem 1rem;
+  padding: 11px 14px;
   border: 1.5px solid var(--black);
-  border-radius: 8px;
+  border-radius: 7px;
   color: var(--black);
+  background: transparent;
   text-align: center;
   text-decoration: none;
   font-family: "Courier New", Courier, monospace;
-  background: transparent;
-  transition: background 0.18s ease, color 0.18s ease;
+  font-size: 14px;
+  transition: background 0.16s ease, color 0.16s ease;
 }
 
-.card-actions a:hover,
-.button:hover {
+.home-buttons a:hover,
+.panel-button:hover,
+.close-button:hover {
   background: rgba(255, 255, 255, 0.45);
 }
 
-.card-actions .wide {
+.home-buttons .wide {
   grid-column: 1 / -1;
 }
 
 .welcome-card {
   position: absolute;
-  right: 2rem;
-  bottom: 2rem;
-  width: min(390px, calc(100vw - 4rem));
-  padding: 1.4rem;
+  right: 32px;
+  bottom: 32px;
+  width: 390px;
+  padding: 22px;
   background: var(--yellow);
   border: 2px solid var(--black);
   border-radius: var(--radius);
   text-align: right;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
 }
 
 .welcome-card h2 {
-  margin: 0 0 1rem;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1;
-  letter-spacing: -0.05em;
+  margin: 0 0 18px;
+  font-size: 40px;
+  line-height: 0.95;
+  letter-spacing: -0.055em;
   font-weight: 900;
 }
 
 .welcome-card p {
-  margin: 0 0 1rem;
+  margin: 0 0 18px;
   font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .welcome-card .credit {
-  font-size: 0.9rem;
+  font-size: 13px;
 }
 
 .welcome-card .contact {
@@ -180,46 +187,85 @@ a {
   font-weight: 700;
 }
 
-.hidden-content {
-  padding: 2rem;
-  background: var(--yellow);
+.welcome-card a {
+  color: var(--black);
 }
 
-.content-card {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1.6rem;
+/* Right-side overlay panels */
+
+.overlay-panel {
+  display: none;
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  right: 0;
+  width: 600px;
+  height: 100vh;
+  padding: 28px 26px;
   background: var(--white);
-  border: 2px solid var(--black);
-  border-radius: var(--radius);
+  border-left: 2px solid var(--black);
+  overflow-y: auto;
 }
 
-.content-card h2 {
-  margin: 0 0 1rem;
-  font-size: 2.4rem;
+.overlay-panel:target {
+  display: block;
+}
+
+.panel-inner {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.close-button {
+  width: 86px;
+  margin-left: auto;
+  margin-bottom: 14px;
+  padding: 8px 12px;
+}
+
+.panel-kicker {
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+}
+
+.panel-inner h2 {
+  margin: 28px 0 22px;
+  font-size: 44px;
   line-height: 1;
-  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.055em;
+  font-weight: 900;
 }
 
-@media (max-width: 900px) {
+.panel-inner p {
+  margin: 0 0 22px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.panel-inner a {
+  color: var(--black);
+  text-underline-offset: 0.18em;
+}
+
+.panel-inner hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 22px 0;
+}
+
+.panel-button {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* Smaller screens: keep fixed composition but allow page scroll */
+
+@media (max-width: 1279px) {
   .homepage {
-    min-height: auto;
-    padding: 1rem;
-  }
-
-  .main-card {
-    width: 100%;
-    min-height: auto;
-  }
-
-  .welcome-card {
-    position: static;
-    width: 100%;
-    margin-top: 1rem;
-    text-align: left;
-  }
-
-  .card-actions {
-    grid-template-columns: 1fr;
+    overflow-x: auto;
   }
 }
