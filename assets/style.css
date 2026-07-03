@@ -269,3 +269,108 @@ body {
     overflow-x: auto;
   }
 }
+
+/* === Home page size correction === */
+
+/* Stop the homepage elements from stretching with viewport height */
+.home-screen {
+  min-width: 1280px;
+  min-height: 720px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Left yellow card: smaller, fixed, content fully contained */
+.yellow-card {
+  left: 32px;
+  top: 32px;
+  width: 560px;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  padding: 20px;
+  border: none;
+  border-radius: 12px;
+}
+
+/* Reduce title size closer to Cargo homepage */
+.brand-section h1 {
+  font-size: 78px;
+  line-height: 0.82;
+}
+
+.brand-section h2 {
+  margin-top: 22px;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+/* Tighten vertical spacing */
+hr {
+  margin: 16px 0;
+}
+
+.feature-block,
+.main-entry {
+  padding: 0;
+}
+
+.main-entry h3,
+.feature-block h2 {
+  font-size: 38px;
+  line-height: 1.04;
+}
+
+.entry-meta,
+.mono {
+  margin-top: 22px;
+}
+
+.news-row {
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* Make sure buttons sit inside the card */
+.button-grid {
+  margin-top: 18px;
+  padding-top: 0;
+}
+
+/* Right welcome card: smaller and no heavy border */
+.welcome-card {
+  right: 32px;
+  bottom: 32px;
+  width: 350px;
+  padding: 18px;
+  border: none;
+  border-radius: 12px;
+}
+
+.welcome-card h2 {
+  font-size: 34px;
+  margin-bottom: 14px;
+}
+
+.welcome-card p {
+  font-size: 13px;
+  line-height: 1.42;
+  margin-bottom: 14px;
+}
+
+/* Keep button outlines, but make them lighter */
+.button-grid a,
+.close-button,
+.panel-button {
+  border: 1.2px solid var(--black);
+}
+
+/* Hover like Cargo: fade rather than grey block */
+a {
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.55;
+}
