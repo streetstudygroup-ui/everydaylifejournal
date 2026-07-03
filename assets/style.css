@@ -1,0 +1,242 @@
+:root {
+  --yellow: #ffc400;
+  --black: #111111;
+  --white: #ffffff;
+  --radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--yellow);
+  color: var(--black);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--black);
+  text-underline-offset: 0.16em;
+}
+
+.site-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.9rem max(1.2rem, calc((100vw - 1400px) / 2 + 1.2rem));
+  background: var(--black);
+  color: var(--white);
+}
+
+.site-topbar a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.site-topbar a:hover {
+  color: #cfcfcf;
+}
+
+.site-brand {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.site-topbar nav {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.8rem 1.2rem 3rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-main,
+.hero-card,
+.section-title,
+.section-content,
+.card,
+.site-footer {
+  background: var(--white);
+  border: 2px solid var(--black);
+  border-radius: var(--radius);
+}
+
+.hero-main {
+  padding: 2rem;
+}
+
+.kicker {
+  margin: 0 0 0.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(4rem, 12vw, 11rem);
+  line-height: 0.85;
+  letter-spacing: -0.07em;
+}
+
+.subtitle {
+  margin: 1.2rem 0 1.5rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: clamp(1.1rem, 2.6vw, 2.2rem);
+  font-style: italic;
+}
+
+.hero-text {
+  max-width: 760px;
+  font-size: 1.2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.8rem 1rem;
+  background: var(--black);
+  color: var(--white) !important;
+  border: 2px solid var(--black);
+  text-decoration: none;
+  font-weight: 900;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.button:hover {
+  background: #444444;
+  border-color: #444444;
+}
+
+.button.full {
+  width: 100%;
+  text-align: center;
+}
+
+.hero-card {
+  padding: 1.3rem;
+  align-self: stretch;
+}
+
+.hero-card h2,
+.section-title h2,
+.card h3 {
+  margin: 0 0 1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.1;
+}
+
+.hero-card h2 {
+  font-size: 2rem;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title,
+.section-content {
+  padding: 1.5rem;
+}
+
+.section-title h2 {
+  font-size: 2.4rem;
+}
+
+.section-content p {
+  max-width: 900px;
+  font-size: 1.05rem;
+}
+
+.cards {
+  display: grid;
+  gap: 1rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.card {
+  padding: 1.3rem;
+}
+
+.card h3 {
+  font-size: 1.7rem;
+}
+
+.card p {
+  margin-bottom: 1rem;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a:hover,
+.section-content a:hover,
+.card a:hover {
+  background: #e6e6e6;
+}
+
+@media (max-width: 900px) {
+  .site-topbar,
+  .hero,
+  .section-grid,
+  .site-footer {
+    display: block;
+  }
+
+  .site-topbar nav {
+    margin-top: 0.6rem;
+  }
+
+  .hero-card,
+  .section-title,
+  .section-content,
+  .card {
+    margin-top: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(3.5rem, 20vw, 6rem);
+  }
+}
