@@ -6,6 +6,7 @@
   --radius: 12px;
 }
 
+/* 全局盒模型，保证 padding 不会额外撑大元素 */
 * {
   box-sizing: border-box;
 }
@@ -21,7 +22,21 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Main fixed homepage */
+/* 所有链接的默认样式和 hover 透明效果 */
+a {
+  color: var(--black);
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.55;
+}
+
+/* =========================================================
+   主页整体背景
+   - 控制整屏背景图
+   - min-width / min-height 用来保持桌面版固定构图
+   ========================================================= */
 
 .homepage {
   position: relative;
@@ -36,48 +51,80 @@ body {
   background-repeat: no-repeat;
 }
 
-/* Left yellow card */
+/* =========================================================
+   左侧黄色主卡片
+   - width 控制黄色卡片宽度
+   - height 控制黄色卡片高度
+   - padding 控制内部文字和边缘距离
+   - display:flex + margin-top:auto 让底部按钮固定靠下
+   ========================================================= */
 
 .home-card {
   position: absolute;
   left: 32px;
   top: 32px;
-  width: 560px;
-  height: auto;
-  padding: 22px 24px 18px;
+  width: 570px;
+  height: 760px;
+  padding: 24px 24px 26px;
   background: var(--yellow);
   border: none;
+  outline: none;
+  box-shadow: none;
   border-radius: var(--radius);
-  display: block;
+
+  display: flex;
+  flex-direction: column;
 }
 
-/* Brand */
+/* =========================================================
+   顶部品牌标题区域
+   - brand-block 控制标题区底部留白和分割线
+   ========================================================= */
 
 .brand-block {
-  padding-bottom: 18px;
+  padding-bottom: 38px;
   border-bottom: 1px solid var(--line);
 }
 
+/* “Everyday Life” 大标题
+   - font-size 控制大小
+   - letter-spacing 控制字距
+   - scaleX 控制横向压缩/拉伸
+   - white-space: nowrap 保证不换行
+*/
 .brand-block h1 {
   margin: 0;
-  font-size: 72px;
-  line-height: 0.86;
-  letter-spacing: -0.075em;
+  font-size: 85px;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
   font-weight: 900;
+  white-space: nowrap;
+  display: inline-block;
+  transform: scaleX(0.9); /* 横向宽度：越小越窄，例如 0.88；越大越宽，例如 0.95 */
+  transform-origin: left top;
 }
 
+/* 副标题：International Journal...
+   - font-size 控制大小
+   - line-height 控制行距
+   - letter-spacing 控制字距
+*/
 .brand-block p {
   margin: 18px 0 0;
-  font-size: 20px;
-  line-height: 1.25;
+  max-width: 520px;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.05em;
   font-style: italic;
   font-weight: 800;
 }
 
-/* Main entry */
+/* =========================================================
+   Current Issue / 主入口区域
+   ========================================================= */
 
 .feature-block {
-  padding: 18px 0;
+  padding: 16px 0 18px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -86,42 +133,60 @@ body {
   text-decoration: none;
 }
 
+/* 小标签：Current Issue */
 .small-label {
   margin: 0 0 8px;
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
 }
 
+/* 当前 Issue 主标题
+   - font-size 控制标题大小
+   - letter-spacing 控制标题字距
+   - font-weight 700 + text-shadow 是为了避免 800 太粗、799 太细
+*/
 .feature-block h2 {
   margin: 0;
-  font-size: 36px;
+  max-width: 540px;
+  font-size: 30px;
   line-height: 1.04;
-  letter-spacing: -0.055em;
-  font-weight: 900;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+  text-shadow:
+    0.35px 0 0 var(--black),
+    -0.35px 0 0 var(--black);
 }
 
+/* Issue 日期 / 卷期信息 */
 .mono {
   margin: 20px 0 0;
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
-  line-height: 1.45;
+  line-height: 1.6;
 }
 
-/* News */
+/* =========================================================
+   Field Notes / Conversation 栏目入口
+   ========================================================= */
 
 .news-block {
   border-bottom: 1px solid var(--line);
 }
 
+/* 每一个栏目行
+   - padding 控制上下留白
+   - line-height 控制文字行距
+   - grid-template-columns 让右侧 V1 I1 靠右
+*/
 .news-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 18px;
-  padding: 10px 0;
+  padding: 15px 0; /* 想让栏目更松就加大，例如 17px；更紧就改 12px */
   border-bottom: 1px solid var(--line);
   font-family: "Courier New", Courier, monospace;
-  font-size: 14px;
-  line-height: 1.42;
+  font-size: 13.5px;
+  line-height: 1.48;
 }
 
 .news-row:last-child {
@@ -129,21 +194,58 @@ body {
 }
 
 .news-row a {
+  display: block;
   color: var(--black);
   text-decoration: none;
 }
 
-.issue-number {
-  text-align: right;
+/* 鼠标经过栏目时的轻微白色背景 */
+.news-row:hover {
+  background: rgba(255, 255, 255, 0.18);
 }
 
-/* Buttons */
+/* Field Notes / Conversation 标题
+   - font-size 控制这两个栏目标题大小
+*/
+.news-row strong {
+  display: inline-block;
+  margin-bottom: 3px;
+  font-size: 16.5px; /* 想再大一点改 17px */
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+/* Rolling section · Current issue 这一行 */
+.section-status {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-style: italic;
+  opacity: 0.72;
+}
+
+/* 右侧 V1 I1 */
+.issue-number {
+  text-align: right;
+  white-space: nowrap;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   底部三个按钮
+   - margin-top:auto 把按钮推到黄卡底部
+   ========================================================= */
 
 .home-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  padding-top: 18px;
+  padding-top: 16px;
+  margin-top: 20px; /* 关键：把按钮推到底部 */
+}
+
+.home-buttons .wide {
+  grid-column: 1 / -1;
 }
 
 .home-buttons a,
@@ -162,18 +264,9 @@ body {
   transition: opacity 0.2s ease, background-color 0.2s ease;
 }
 
-.home-buttons a:hover,
-.close-button:hover,
-.panel-button:hover,
-a:hover {
-  opacity: 0.55;
-}
-
-.home-buttons .wide {
-  grid-column: 1 / -1;
-}
-
-/* Right welcome card */
+/* =========================================================
+   右下角 Welcome 卡片
+   ========================================================= */
 
 .welcome-card {
   position: absolute;
@@ -183,6 +276,8 @@ a:hover {
   padding: 18px;
   background: var(--yellow);
   border: none;
+  outline: none;
+  box-shadow: none;
   border-radius: var(--radius);
   text-align: right;
 }
@@ -215,81 +310,742 @@ a:hover {
   color: var(--black);
 }
 
-/* Right overlay panels */
+/* =========================================================
+   左下角 SSG logo
+   - width / height 控制外框尺寸
+   - border 控制描边；0px 就是无描边
+   ========================================================= */
 
+.corner-logo-card {
+  position: absolute;
+  left: 25px;
+  bottom: 15px;
+  width: 150px;
+  height: 80px;
+  padding: 14px;
+  background: transparent;
+  border: 0px solid var(--yellow); /* 想要黄色描边改成 2px solid var(--yellow) */
+  outline: none;
+  box-shadow: none;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: opacity 0.2s ease;
+}
+
+.corner-logo-card:hover {
+  opacity: 0.55;
+}
+
+/* logo 图片本身大小 */
+.corner-logo-card img {
+  max-width: 88%;
+  max-height: 80%;
+  object-fit: contain;
+  display: block;
+}
+
+/* =========================================================
+   右侧弹出 panel：About / Editorial Board / Publish With Us
+   ========================================================= */
+
+/* 整个白色弹窗本体
+   - top / right 控制弹窗距离浏览器边缘的位置
+   - width 控制弹窗宽度
+   - height 控制弹窗高度
+   - padding 控制内容和白框边缘的距离
+   - border-radius 控制白框圆角
+   - background 控制白框底色
+*/
 .side-panel {
   display: none;
   position: fixed;
   z-index: 20;
-  top: 0;
-  right: 0;
-  width: 600px;
-  height: 100vh;
-  padding: 28px 26px;
+
+  top: 24px;                         /* 弹窗距离顶部 */
+  right: 0px;                        /* 弹窗距离右侧；如果想右边也露背景，改成 24px */
+  width: 600px;                      /* 弹窗整体宽度 */
+  height: calc(100vh - 48px);        /* 弹窗高度：上下各留 24px */
+
+  padding: 28px 26px;                /* 内容距离白框边缘的距离 */
   background: var(--white);
-  border-left: 2px solid var(--black);
-  overflow-y: auto;
+
+  border: none;                      /* 去掉外框线 */
+  outline: none;
+  box-shadow: none;                  /* 不要阴影 */
+  border-radius: var(--radius);      /* 四角圆角；数值来自 :root 的 --radius */
+
+  overflow-y: auto;                  /* 内容太长时允许内部滚动 */
 }
 
+/* URL 出现 #about-this-journal / #editorial-board 时显示对应 panel */
 .side-panel:target {
   display: block;
 }
 
+/* 弹窗内部内容区
+   - max-width 控制文字区域宽度
+   - margin: 0 auto 让内容在白框里居中
+*/
 .panel-content {
-  max-width: 520px;
+  max-width: 520px;                  /* 正文宽度；想更宽改 540px */
   margin: 0 auto;
 }
 
+/* Close 按钮
+   - width 控制按钮宽度
+   - padding 控制按钮内部空间
+   - margin-bottom 控制 Close 和下面分割线/标题的距离
+*/
 .close-button {
   width: 86px;
   margin-left: auto;
-  margin-bottom: 14px;
-  padding: 8px 12px;
+  margin-bottom: 10px;
+  padding: 10px 12px;
 }
 
+/* 小标题：Editorial Board / About This Journal
+   - font-family 控制字体
+   - font-size 可以单独加
+   - padding-top 控制和上方分割线距离
+*/
 .panel-title {
   margin: 0;
   padding-top: 16px;
   border-top: 1px solid var(--line);
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 700;
-}
 
-.panel-content h2 {
-  margin: 28px 0 22px;
-  font-size: 44px;
-  line-height: 1;
-  letter-spacing: -0.055em;
+  font-family: "Courier New", inline-block;  /* 小标题字体 */
+  font-size: 16.5px;                                 /* 小标题字号 */
+  line-height: 1.3;                                /* 小标题行距 */
+  letter-spacing: em;
+  width: 111.111%;
+  transform: scaleX(0.9);
+  transform-origin: left top;
   font-weight: 900;
 }
 
-.panel-content p {
-  margin: 0 0 22px;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 16px;
-  line-height: 1.55;
+/* 弹窗大标题：Executive Editor / Co-editors
+   - font-size 控制大标题大小
+   - line-height 控制标题行距
+   - letter-spacing 控制字距
+   - margin 控制标题上下距离
+*/
+.panel-content h2 {
+  margin: 28px 0 22px;              /* 上 28px，右 0，下 22px，左 0 */
+  font-size: 30px;                  /* 大标题大小；现在比之前 44px 稍小 */
+  line-height: 1;                   /* 标题行距 */
+  letter-spacing: -0.005em;         /* 字距；负数越大越挤 */
+  transform: scaleX(0.85);
+  transform-origin: left top;
+  font-weight: 900;
 }
 
+/* 弹窗正文文字
+   - 这里控制机构、Areas、Contact 等正文
+   - font-family 是正文用 Courier 的原因
+   - font-size 控制正文大小
+   - line-height 控制正文行距
+*/
+.panel-content p {
+  margin: 0 0 20px;                 /* 每段之间的距离 */
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;                /* 正文字号；想小一点改 15px */
+  line-height: 1.5;                 /* 正文行距；想松一点改 1.6 */
+  letter-spacing: -0.03em;
+}
+
+/* 弹窗内所有链接的基础样式
+   - 默认不加下划线，避免 ORCID 名字和 Contact 混在一起
+*/
 .panel-content a {
   color: var(--black);
+  text-decoration: none;
   text-underline-offset: 0.18em;
 }
 
+/* Contact 链接
+   - 所有 mailto 邮箱链接都显示下划线
+   - 也就是 Contact ↗ 会有横线
+*/
+.panel-content a[href^="mailto:"] {
+  text-decoration: underline;
+}
+
+/* ORCID / 姓名链接
+   - 例如 Sinan Wang 链接到 ORCID
+   - 不显示下划线
+*/
+.editorial-member strong:first-child a {
+  text-decoration: none;
+}
+
+/* ORCID / 姓名链接 hover
+   - 鼠标移上去只变透明，不加横线
+*/
+.editorial-member strong:first-child a:hover {
+  text-decoration: none;
+  opacity: 0.55;
+}
+
+/* 弹窗内横线，例如 Executive Editor 和 Co-editors 之间 */
 .panel-content hr {
   border: none;
   border-top: 1px solid var(--line);
-  margin: 22px 0;
+  margin: 24px 0;                   /* 横线上下距离 */
 }
 
+/* 弹窗里的大按钮，例如 Read Current Call */
 .panel-button {
   width: 100%;
   margin-top: 12px;
 }
 
-/* Small screens: keep desktop composition, allow horizontal scroll */
+/* =========================================================
+   Editorial Board 成员列表
+   ========================================================= */
+
+/* 每个编辑成员之间的距离
+   - 数值越大，每个人之间越松
+*/
+.editorial-member {
+  margin-bottom: 28px;
+}
+
+/* 每个成员信息段落底部不要再额外加 margin */
+.editorial-member p {
+  margin-bottom: 0;
+}
+
+/* 成员姓名
+   - 这里控制 Sinan Wang / Dr. Fangjie Guo / Houwei Fu 等姓名
+   - display: inline-block 让 margin-bottom 生效
+*/
+.editorial-member strong:first-child {
+  display: inline-block;
+  margin-bottom: 4px;
+
+  font-size: 16px;                  /* 姓名字号 */
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+/* 如果姓名里面是链接，例如 Sinan Wang 链到 ORCID
+   - 姓名链接不显示下划线
+   - Contact 链接单独用 mailto 规则显示下划线
+*/
+.editorial-member strong:first-child a {
+  color: var(--black);
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* 鼠标移到姓名 / ORCID 链接上：只变透明，不出现下划线 */
+.editorial-member strong:first-child a:hover {
+  text-decoration: none !important;
+  border-bottom: none !important;
+  opacity: 0.55;
+}
+
+
+/* Areas 这个粗体标签
+   - 不要误伤第一个姓名，所以用 p strong:not(:first-child)
+*/
+.editorial-member p strong:not(:first-child) {
+  font-weight: 700;
+}
+
+/* =========================================================
+   小屏幕处理
+   - 保持桌面构图，不重新排版，只允许横向滚动
+   ========================================================= */
 
 @media (max-width: 1279px) {
   .homepage {
     overflow-x: auto;
+  }
+}
+
+
+
+/* =========================================================
+   Submission Guidelines 独立页面整体样式
+   ========================================================= */
+
+/* 页面最外层容器
+   - max-width 控制正文最大宽度
+   - margin 控制页面居中
+   - padding 控制页面四周留白
+*/
+.submission-page {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 32px 24px 56px;
+}
+
+/* 顶部返回区域
+   - margin-bottom 控制它和标题区之间的距离
+*/
+.submission-back {
+  margin-bottom: 18px;
+}
+
+/* Close / 返回首页按钮
+   - display 让按钮可以设置宽高和内边距
+   - border 控制黑色描边
+   - border-radius 控制圆角
+*/
+.submission-back a {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1.2px solid var(--black);
+  border-radius: 7px;
+  color: var(--black);
+  background: transparent;
+  text-decoration: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+}
+
+/* 页面小标题：Submission Guideline
+   - border-top 控制顶部横线
+   - padding-top 控制横线和文字距离
+*/
+.submission-label {
+  margin: 0 0 26px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16.5px;
+  line-height: 1.3;
+  font-weight: 900;
+}
+
+/* 页面主标题
+   - font-size 控制大标题大小
+   - line-height 控制标题行距
+*/
+.submission-header h1 {
+  margin: 0 0 28px;
+  font-size: 42px;
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+/* 每个白色内容区块
+   - padding 控制区块内部留白
+   - margin-bottom 控制区块之间距离
+   - border 控制黑色边框
+*/
+.submission-section {
+  padding: 24px 28px;
+  margin-bottom: 18px;
+  background: var(--white);
+  border: 1.5px solid var(--black);
+  border-radius: 10px;
+}
+
+/* 区块标题，例如 Submission Checklist
+   - text-transform 控制是否大写
+*/
+.submission-section h2 {
+  margin: 0 0 16px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* 小标题，例如 1. Title Page */
+.submission-section h3 {
+  margin: 24px 0 8px;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 900;
+}
+
+/* 正文、列表文字
+   - font-size 控制正文大小
+   - line-height 控制正文行距
+*/
+.submission-section p,
+.submission-section li {
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+/* 正文段落间距 */
+.submission-section p {
+  margin: 0 0 14px;
+}
+
+/* 列表整体缩进和上下距离 */
+.submission-section ul {
+  margin: 8px 0 18px;
+  padding-left: 22px;
+}
+
+/* 每条列表之间的距离 */
+.submission-section li {
+  margin: 5px 0;
+}
+
+/* 期刊信息表格区域 */
+.submission-meta {
+  margin: 0;
+}
+
+/* 每一行期刊信息
+   - grid-template-columns 控制左侧标签和右侧内容宽度
+*/
+.submission-meta div {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 18px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+
+/* 第一行不需要上边线 */
+.submission-meta div:first-child {
+  border-top: none;
+}
+
+/* 左侧标签文字，例如 Title / Publisher */
+.submission-meta dt {
+  font-weight: 900;
+}
+
+/* 右侧说明文字 */
+.submission-meta dd {
+  margin: 0;
+}
+
+/* 邮箱链接和下载按钮 */
+.submission-button {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1.5px solid var(--black);
+  border-radius: 7px;
+  color: var(--black);
+  text-decoration: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+}
+
+/* 手机窄屏适配
+   - 信息表格从左右两列变成上下排列
+*/
+@media (max-width: 760px) {
+  .submission-page {
+    padding: 24px 16px 44px;
+  }
+
+  .submission-meta div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .submission-section {
+    padding: 18px;
+  }
+
+  .submission-header h1 {
+    font-size: 32px;
+  }
+}
+
+
+/* =========================================================
+   Field Notes / Conversation 独立列表页
+   ========================================================= */
+
+/* 整个列表页面
+   - max-width 控制页面最大宽度
+   - margin 控制页面居中
+   - padding 控制页面四周留白
+*/
+.listing-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 56px;
+}
+
+/* 顶部 Close 返回按钮区域
+   - margin-bottom 控制按钮和标题之间的距离
+*/
+.listing-back {
+  margin-bottom: 18px;
+}
+
+/* Close 按钮样式 */
+.listing-back a {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1.2px solid var(--black);
+  border-radius: 7px;
+  color: var(--black);
+  background: transparent;
+  text-decoration: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+}
+
+/* 页面顶部标题区域
+   - margin-bottom 控制标题区和文章列表之间的距离
+*/
+.listing-header {
+  margin-bottom: 24px;
+}
+
+/* 小标签：Rolling Section */
+.listing-label {
+  margin: 0 0 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16.5px;
+  line-height: 1.3;
+  font-weight: 900;
+}
+
+/* 页面大标题：Field Notes / Conversation */
+.listing-header h1 {
+  margin: 0 0 12px;
+  font-size: 56px;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 900;
+}
+
+/* 页面介绍文字 */
+.listing-header p {
+  max-width: 680px;
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* 文章列表外框
+   - 以后有文章时，每篇文章可以放在这里面
+*/
+.listing-section {
+  min-height: 260px;
+  padding: 24px;
+  background: var(--white);
+  border: 1.5px solid var(--black);
+  border-radius: 10px;
+}
+
+/* 暂无文章提示 */
+.listing-empty {
+  min-height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+}
+
+/* 暂无文章文字 */
+.listing-empty p {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+}
+
+/* 手机屏幕适配 */
+@media (max-width: 760px) {
+  .listing-page {
+    padding: 24px 16px 44px;
+  }
+
+  .listing-header h1 {
+    font-size: 40px;
+  }
+
+  .listing-section {
+    padding: 18px;
+  }
+}
+
+/* =========================================================
+   Issue 独立页面：当前期刊大厅
+   ========================================================= */
+
+/* 整个 issue 页面
+   - max-width 控制页面最大宽度
+   - margin 控制页面居中
+   - padding 控制页面四周留白
+*/
+.issue-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px 24px 56px;
+}
+
+/* 顶部 Close 返回按钮区域
+   - margin-bottom 控制按钮和封面区之间距离
+*/
+.issue-back {
+  margin-bottom: 18px;
+}
+
+/* Close 按钮样式 */
+.issue-back a {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1.2px solid var(--black);
+  border-radius: 7px;
+  color: var(--black);
+  background: transparent;
+  text-decoration: none;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+}
+
+/* 顶部 issue 信息区
+   - grid-template-columns 控制左侧封面和右侧标题宽度
+   - gap 控制封面和文字之间距离
+*/
+.issue-header {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 28px;
+  align-items: stretch;
+  margin-bottom: 24px;
+}
+
+/* 封面外层
+   - 以后正式封面图片可以放在这里
+*/
+.issue-cover {
+  min-height: 430px;
+}
+
+/* 封面占位框
+   - background 控制封面底色
+   - border 控制封面边框
+*/
+.issue-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border: 1.5px solid var(--black);
+  border-radius: 10px;
+}
+
+/* 封面占位文字 */
+.issue-cover-placeholder span {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+}
+
+/* 右侧标题信息白色区块 */
+.issue-header-text {
+  padding: 28px 32px;
+  background: var(--white);
+  border: 1.5px solid var(--black);
+  border-radius: 10px;
+}
+
+/* 小标签：Current Issue */
+.issue-label {
+  margin: 0 0 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 16.5px;
+  line-height: 1.3;
+  font-weight: 900;
+}
+
+/* Issue 主标题 */
+.issue-header h1 {
+  margin: 0 0 28px;
+  font-size: 54px;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  font-weight: 900;
+}
+
+/* Volume / Issue / 发布时间 */
+.issue-meta {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* 每个栏目区块
+   - margin-bottom 控制栏目之间距离
+*/
+.issue-section {
+  padding: 24px 28px;
+  margin-bottom: 18px;
+  background: var(--white);
+  border: 1.5px solid var(--black);
+  border-radius: 10px;
+}
+
+/* 栏目标题：Research Articles 等 */
+.issue-section h2 {
+  margin: 0 0 18px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* 暂无文章区域 */
+.issue-empty {
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+}
+
+/* 暂无文章文字 */
+.issue-empty p {
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+}
+
+/* 手机屏幕适配 */
+@media (max-width: 820px) {
+  .issue-page {
+    padding: 24px 16px 44px;
+  }
+
+  .issue-header {
+    grid-template-columns: 1fr;
+  }
+
+  .issue-header h1 {
+    font-size: 38px;
+  }
+
+  .issue-cover,
+  .issue-cover-placeholder {
+    min-height: 360px;
+  }
+
+  .issue-header-text,
+  .issue-section {
+    padding: 20px;
   }
 }
