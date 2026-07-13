@@ -626,6 +626,15 @@ a:hover {
    - font-size 控制大标题大小
    - line-height 控制标题行距
 */
+.submission-cover-slot {
+  width: min(260px, 72vw);
+  aspect-ratio: 3 / 4;
+  margin: 0 0 28px;
+  background: var(--white);
+  border: 1.5px solid var(--black);
+  border-radius: 8px;
+}
+
 .submission-header h1 {
   margin: 0 0 28px;
   font-size: 42px;
@@ -755,6 +764,10 @@ a:hover {
 
   .submission-header h1 {
     font-size: 32px;
+  }
+
+  .submission-cover-slot {
+    width: min(220px, 74vw);
   }
 }
 
