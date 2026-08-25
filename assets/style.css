@@ -627,12 +627,14 @@ a:hover {
    - line-height 控制标题行距
 */
 .submission-cover-slot {
+  display: block;
   width: min(260px, 72vw);
   aspect-ratio: 3 / 4;
   margin: 0 0 28px;
   background: var(--white);
   border: 1.5px solid var(--black);
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .submission-header h1 {
@@ -847,8 +849,7 @@ a:hover {
    - 以后有文章时，每篇文章可以放在这里面
 */
 .listing-section {
-  min-height: 260px;
-  padding: 24px;
+  padding: 20px 24px;
   background: var(--white);
   border: 1.5px solid var(--black);
   border-radius: 10px;
@@ -870,6 +871,44 @@ a:hover {
   margin: 0;
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
+}
+
+.listing-article {
+  padding: 0 0 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.listing-article:last-child {
+  border-bottom: none;
+}
+
+.listing-article-meta {
+  margin: 0 0 8px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+}
+
+.listing-article h2 {
+  margin: 0 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  line-height: 1.12;
+}
+
+.listing-article h2 a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.listing-article h2 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.listing-article p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.55;
 }
 
 /* 手机屏幕适配 */
@@ -939,6 +978,17 @@ a:hover {
 */
 .issue-cover {
   min-height: 430px;
+}
+
+.issue-cover img {
+  width: 100%;
+  height: 100%;
+  min-height: 430px;
+  display: block;
+  object-fit: cover;
+  background: var(--white);
+  border: 1.5px solid var(--black);
+  border-radius: 10px;
 }
 
 /* 封面占位框
@@ -1036,6 +1086,44 @@ a:hover {
   margin: 0;
   font-family: "Courier New", Courier, monospace;
   font-size: 14px;
+}
+
+.issue-article {
+  padding: 0 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.issue-article:last-child {
+  border-bottom: none;
+}
+
+.issue-article-meta {
+  margin: 0 0 8px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+}
+
+.issue-article h3 {
+  margin: 0 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  line-height: 1.16;
+}
+
+.issue-article h3 a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.issue-article h3 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
+
+.issue-article p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.55;
 }
 
 /* 手机屏幕适配 */
