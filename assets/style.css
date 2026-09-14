@@ -313,6 +313,80 @@ a:hover {
 }
 
 /* =========================================================
+   右侧活动通知
+   ========================================================= */
+
+.event-popover {
+  position: absolute;
+  right: 32px;
+  bottom: 325px;
+  z-index: 8;
+  width: 340px;
+  padding: 14px 16px 15px;
+  background: var(--yellow);
+  border: none;
+  border-radius: 10px;
+  box-shadow: none;
+  font-family: "Courier New", Courier, monospace;
+  transform-origin: right bottom;
+}
+
+.event-popover[hidden] {
+  display: none;
+}
+
+.event-popover-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--black);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.event-popover-kicker {
+  margin: 0 32px 7px 0;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.event-popover h2 {
+  margin: 0 0 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 1.05;
+  letter-spacing: 0;
+  font-weight: 900;
+}
+
+.event-popover p {
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  line-height: 1.35;
+}
+
+.event-popover a {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--black);
+  border-radius: 0;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* =========================================================
    左下角 SSG logo
    - width / height 控制外框尺寸
    - border 控制描边；0px 就是无描边
@@ -566,6 +640,7 @@ a:hover {
 @media (min-width: 821px) and (max-height: 860px) {
   .home-card,
   .welcome-card,
+  .event-popover,
   .corner-logo-card {
     transform: scale(0.88);
   }
@@ -574,6 +649,7 @@ a:hover {
 @media (min-width: 821px) and (max-height: 760px) {
   .home-card,
   .welcome-card,
+  .event-popover,
   .corner-logo-card {
     transform: scale(0.78);
   }
@@ -582,6 +658,7 @@ a:hover {
 @media (min-width: 821px) and (max-height: 680px) {
   .home-card,
   .welcome-card,
+  .event-popover,
   .corner-logo-card {
     transform: scale(0.68);
   }
@@ -606,6 +683,13 @@ a:hover {
   .welcome-card {
     right: 24px;
     bottom: 24px;
+    width: min(340px, calc(100vw - 48px));
+    transform: none;
+  }
+
+  .event-popover {
+    right: 24px;
+    bottom: 315px;
     width: min(340px, calc(100vw - 48px));
     transform: none;
   }
@@ -635,6 +719,7 @@ a:hover {
 
   .home-card,
   .welcome-card,
+  .event-popover,
   .corner-logo-card {
     position: relative;
     left: auto;
@@ -711,6 +796,22 @@ a:hover {
 
   .welcome-card h2 {
     font-size: 32px;
+  }
+
+  .event-popover {
+    position: fixed;
+    right: 14px;
+    bottom: max(14px, env(safe-area-inset-bottom));
+    left: 14px;
+    width: auto;
+    max-height: min(36svh, 280px);
+    overflow-y: auto;
+    padding: 14px 14px 16px;
+    border-radius: 10px;
+  }
+
+  .event-popover h2 {
+    font-size: 20px;
   }
 
   .corner-logo-card {
