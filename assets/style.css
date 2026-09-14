@@ -319,10 +319,11 @@ a:hover {
 .event-popover {
   position: absolute;
   right: 32px;
-  bottom: 325px;
+  bottom: 320px;
   z-index: 8;
+  box-sizing: border-box;
   width: 340px;
-  padding: 14px 16px 15px;
+  padding: 24px 18px 14px;
   background: var(--yellow);
   border: none;
   border-radius: 10px;
@@ -338,8 +339,8 @@ a:hover {
 
 .event-popover-close {
   position: absolute;
-  top: 10px;
-  right: 12px;
+  top: 8px;
+  right: 14px;
   width: 22px;
   height: 22px;
   padding: 0;
@@ -353,23 +354,23 @@ a:hover {
 }
 
 .event-popover-kicker {
-  margin: 0 32px 7px 0;
+  margin: 0 0 9px;
   font-size: 12px;
   line-height: 1.25;
   font-weight: 700;
 }
 
 .event-popover h2 {
-  margin: 0 0 8px;
+  margin: 4px 0 8px;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 19px;
   line-height: 1.05;
   letter-spacing: 0;
   font-weight: 900;
 }
 
 .event-popover p {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   font-size: 12.5px;
   line-height: 1.35;
 }
@@ -690,7 +691,7 @@ a:hover {
 
   .event-popover {
     right: 24px;
-    bottom: 315px;
+    bottom: 305px;
     width: min(340px, calc(100vw - 48px));
     transform: none;
   }
