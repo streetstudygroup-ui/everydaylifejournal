@@ -328,6 +328,7 @@ a:hover {
   border-radius: 10px;
   box-shadow: none;
   font-family: "Courier New", Courier, monospace;
+  text-align: right;
   transform-origin: right bottom;
 }
 
